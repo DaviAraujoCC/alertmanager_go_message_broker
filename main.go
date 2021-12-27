@@ -14,11 +14,20 @@ import (
 
 	"api/controller"
 	"api/db"
+	"api/models"
+)
+
+var (
+	Url      = os.Getenv("URL")
+	endpoint = os.Getenv("ENDPOINT")
 )
 
 func init() {
 	db.CreateDB()
 	db.CreateTableHosts()
+	if Url != "" {
+		models.InsertEndpoint(Url, endpoint, "default")
+	}
 }
 
 func main() {

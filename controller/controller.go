@@ -7,13 +7,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"strings"
-)
-
-var (
-	apiUrl   = os.Getenv("URL")
-	endpoint = os.Getenv("ENDPOINT")
 )
 
 func PingHandler(w http.ResponseWriter, r *http.Request) {
