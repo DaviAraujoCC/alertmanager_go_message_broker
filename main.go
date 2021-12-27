@@ -19,14 +19,14 @@ import (
 
 var (
 	Url      = os.Getenv("URL")
-	endpoint = os.Getenv("ENDPOINT")
+	Endpoint = os.Getenv("ENDPOINT")
 )
 
 func init() {
 	db.CreateDB()
 	db.CreateTableHosts()
-	if Url != "" {
-		models.InsertEndpoint(Url, endpoint, "default")
+	if Url != "" && Endpoint != "" {
+		models.InsertEndpoint(Url, Endpoint, "default")
 	}
 }
 
