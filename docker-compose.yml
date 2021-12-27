@@ -1,0 +1,9 @@
+services:
+  api:
+    image: alertmanager-broker
+    container_name: api
+    ports:
+      - 3000:3000
+    #environment: 
+      #URL: "https://contoso.com.br"
+      #ENDPOINT: "api/v1/message/send"
