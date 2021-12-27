@@ -44,13 +44,25 @@ If you set url and endpoint as environment variables, they will create an entry 
 
 Example of usage of add/delete endpoints:
 
-Add: 
+<b>Add:</b> 
+
+With alertname:
 ````console
 $ curl -X POST http://localhost:3000/api/v1/endpoint -d '{"action":"add","url":"https://contoso.com","endpoint":"/api/v1/message/send","alertname":"test"}' 
 ````
 
-Delete:
+Without alertname:
+````console
+$ curl -X POST http://localhost:3000/api/v1/endpoint -d '{"action":"add","url":"https://api.google.com","endpoint":"/api/v1/message/send"}' 
+````
+
+<b>Delete:</b>
 ````console
 $ curl -X POST http://localhost:3000/api/v1/endpoint -d '{"action":"delete","id":"1"}'
 ````
 
+## Notes:
+
+* This application is a proof of concept, or a model, it is not meant to be used in production right away, you need to configure the controller mechanism according to your needs.
+* When an alert is send to /api/v1/send endpoint, it will verify if alertname matches with one of the registered endpoints alertname, if it does, it will send the alert to the specific endpoint.
+* If you don't inform the alertname while adding the endpoint, it will send the alert to all the registered endpoints.
