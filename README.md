@@ -51,7 +51,7 @@ With alertname:
 $ curl -X POST http://localhost:3000/api/v1/endpoint -d '{"action":"add","url":"https://contoso.com","endpoint":"/api/v1/message/send","alertname":"test"}' 
 ````
 
-Without alertname:
+Without alertname (by default all alerts will be send to this endpoint):
 ````console
 $ curl -X POST http://localhost:3000/api/v1/endpoint -d '{"action":"add","url":"https://api.google.com","endpoint":"/api/v1/message/send"}' 
 ````
@@ -64,5 +64,5 @@ $ curl -X POST http://localhost:3000/api/v1/endpoint -d '{"action":"delete","id"
 ## Notes:
 
 * This application is a proof of concept, or a model, it is not meant to be used in production right away, you need to configure the controller mechanism according to your needs.
-* When an alert is send to /api/v1/send endpoint, it will verify if alertname matches with one of the registered endpoints alertname, if it does, it will send the alert to the specific endpoint.
+* When an alert is send to /api/v1/send endpoint, it will verify if alertname matches with one of the registered endpoints, if it does, it will send the alert to the specific endpoint.
 * If you don't inform the alertname while adding the endpoint, it will send the alert to all the registered endpoints.
